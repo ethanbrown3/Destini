@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     // set initial story text and state for buttons
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateButtons()
+        startGame()
     }
     
     // User presses one of the buttons
@@ -60,12 +60,13 @@ class ViewController: UIViewController {
                 storyTextView.text = story3
                 storyIndex = 3
             case 3:
-                topButton.isHidden = true
+                topButton.setTitle("Restart", for: UIControlState.normal)
                 bottomButton.isHidden = true
                 storyTextView.text = story6
                 storyIndex = 6
             default :
-                print("invalid storyIndex")
+                // restart game
+                startGame()
             }
             
         } else if (sender.tag == 2) {
@@ -76,12 +77,12 @@ class ViewController: UIViewController {
                 storyTextView.text = story2
                 storyIndex = 2
             case 2:
-                topButton.isHidden = true
+                topButton.setTitle("Restart", for: UIControlState.normal)
                 bottomButton.isHidden = true
                 storyTextView.text = story4
                 storyIndex = 4
             case 3:
-                topButton.isHidden = true
+                topButton.setTitle("Restart", for: UIControlState.normal)
                 bottomButton.isHidden = true
                 storyTextView.text = story5
                 storyIndex = 5
@@ -91,10 +92,13 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateButtons() {
+    func startGame() {
+        topButton.isHidden = false
+        bottomButton.isHidden = false
         topButton.setTitle(answer1a, for: UIControlState.normal)
         bottomButton.setTitle(answer1b, for: UIControlState.normal)
         storyTextView.text = story1
+        storyIndex = 1
     }
 
 
