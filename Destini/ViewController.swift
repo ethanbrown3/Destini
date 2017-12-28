@@ -35,27 +35,67 @@ class ViewController: UIViewController {
     @IBOutlet weak var storyTextView: UILabel!
     
     // TODO Step 5: Initialise instance variables here
-    
-    
+    var storyIndex = 1
     
     // set initial story text and state for buttons
     override func viewDidLoad() {
         super.viewDidLoad()
-        topButton.setTitle(answer1a, for: UIControlState.normal)
-        bottomButton.setTitle(answer1b, for: UIControlState.normal)
-        storyTextView.text = story1
+        updateButtons()
     }
     
     // User presses one of the buttons
     @IBAction func buttonPressed(_ sender: UIButton) {
-    
+        
         // TODO Step 4: Write an IF-Statement to update the views
-        
-        // TODO Step 6: Modify the IF-Statement to complete the story
-        
-    
+        if(sender.tag == 1) {
+            switch storyIndex {
+            case 1:
+                topButton.setTitle(answer3a, for: UIControlState.normal)
+                bottomButton.setTitle(answer3b, for: UIControlState.normal)
+                storyTextView.text = story3
+                storyIndex = 3
+            case 2:
+                topButton.setTitle(answer3a, for: UIControlState.normal)
+                bottomButton.setTitle(answer3b, for: UIControlState.normal)
+                storyTextView.text = story3
+                storyIndex = 3
+            case 3:
+                topButton.isHidden = true
+                bottomButton.isHidden = true
+                storyTextView.text = story6
+                storyIndex = 6
+            default :
+                print("invalid storyIndex")
+            }
+            
+        } else if (sender.tag == 2) {
+            switch storyIndex {
+            case 1:
+                topButton.setTitle(answer2a, for: UIControlState.normal)
+                bottomButton.setTitle(answer2b, for: UIControlState.normal)
+                storyTextView.text = story2
+                storyIndex = 2
+            case 2:
+                topButton.isHidden = true
+                bottomButton.isHidden = true
+                storyTextView.text = story4
+                storyIndex = 4
+            case 3:
+                topButton.isHidden = true
+                bottomButton.isHidden = true
+                storyTextView.text = story5
+                storyIndex = 5
+            default :
+                print("invalid storyIndex")
+            }
+        }
     }
     
+    func updateButtons() {
+        topButton.setTitle(answer1a, for: UIControlState.normal)
+        bottomButton.setTitle(answer1b, for: UIControlState.normal)
+        storyTextView.text = story1
+    }
 
 
 
